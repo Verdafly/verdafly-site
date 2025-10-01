@@ -1,0 +1,45 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 動的ドロップシャドウフィルター -->
+    <filter id="dynamicGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur">
+        <animate attributeName="stdDeviation" 
+                 values="4;6;4" 
+                 dur="2s" repeatCount="indefinite"/>
+      </feGaussianBlur>
+      <feFlood flood-color="#0099cc" result="baseColor"/>
+      <feFlood flood-opacity="0.8" result="opacityColor">
+        <animate attributeName="flood-opacity" 
+                 values="0.8;1.0;0.8" 
+                 dur="2s" repeatCount="indefinite"/>
+      </feFlood>
+      <feComposite in="baseColor" in2="opacityColor" operator="in" result="coloredGlow"/>
+      <feComposite in="coloredGlow" in2="coloredBlur" operator="in" result="finalGlow"/>
+      <feMerge> 
+        <feMergeNode in="finalGlow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- 蝶の本体 -->
+  <g id="butterfly">
+    <!-- 上羽（左） -->
+    <rect x="6" y="10" width="18" height="15" fill="#57b15a"/>
+    
+    <!-- 上羽（右） -->
+    <rect x="36" y="10" width="18" height="15" fill="#57b15a"/>
+    
+    <!-- 下羽（左） -->
+    <rect x="10" y="27" width="14" height="10" fill="#80E0C0"/>
+    
+    <!-- 下羽（右） -->
+    <rect x="36" y="27" width="14" height="10" fill="#80E0C0"/>
+    
+    <!-- 胴体 -->
+    <rect x="26" y="0" width="8" height="40" fill="#FFD700"/>
+  </g>
+  
+  <!-- アニメーション付きの蝶（フェード効果） -->
+  <use href="#butterfly" filter="url(#dynamicGlow)"/>
+</svg>
