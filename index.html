@@ -3,111 +3,470 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verdafly - デジタルエンターテイメントコンテンツ開発</title>
+    <title>Verdafly - デジタルエンターテイメントコンテンツ開発【ゲームUI風版】</title>
     <meta name="description" content="デジタルエンターテイメントコンテンツの開発を行っています。">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --game-gold: #FFD700;
+            --game-bronze: #CD7F32;
+            --game-silver: #C0C0C0;
+            --game-dark: #1a1a2e;
+            --game-purple: #9d4edd;
+            --game-cyan: #00f5ff;
+        }
+
         body {
             font-family: 'Noto Sans JP', sans-serif;
-        }
-        .butterfly-bg {
-            background-color: rgba(76, 175, 80, 0.05);
-            background-image: url("data:image/svg+xml,%3Csvg width='52' height='52' viewBox='0 0 52 52' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M26 26c0-2 2-4 4-4s4 2 4 4-2 4-4 4-4-2-4-4z' fill='%234caf50' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
-        }
-        .verdafly-green {
-            color: #228B22;
-        }
-        .verdafly-bg {
-            background-color: #228B22;
-        }
-        .butterfly-icon {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
+            background: linear-gradient(135deg, #0a0a18 0%, #0d1428 50%, #0a1f3d 100%);
+            color: #ffffff;
+            overflow-x: hidden;
             position: relative;
         }
-        .butterfly-wing {
+
+        /* ホタルアニメーション */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image:
+                radial-gradient(3px 3px at 20% 30%, rgba(135, 206, 250, 1), transparent),
+                radial-gradient(4px 4px at 60% 70%, rgba(173, 216, 230, 1), transparent),
+                radial-gradient(2px 2px at 50% 50%, rgba(176, 224, 230, 1), transparent),
+                radial-gradient(3px 3px at 80% 10%, rgba(135, 206, 250, 0.9), transparent),
+                radial-gradient(4px 4px at 90% 60%, rgba(100, 200, 255, 1), transparent),
+                radial-gradient(2px 2px at 15% 80%, rgba(150, 220, 255, 1), transparent),
+                radial-gradient(3px 3px at 40% 20%, rgba(135, 206, 250, 0.8), transparent),
+                radial-gradient(4px 4px at 75% 90%, rgba(173, 216, 230, 1), transparent),
+                radial-gradient(2px 2px at 30% 60%, rgba(120, 210, 255, 1), transparent),
+                radial-gradient(3px 3px at 65% 40%, rgba(135, 206, 250, 1), transparent),
+                radial-gradient(2px 2px at 25% 55%, rgba(160, 220, 255, 0.9), transparent),
+                radial-gradient(3px 3px at 85% 25%, rgba(140, 215, 255, 1), transparent),
+                radial-gradient(2px 2px at 45% 85%, rgba(130, 200, 250, 1), transparent),
+                radial-gradient(4px 4px at 70% 15%, rgba(100, 200, 255, 0.9), transparent),
+                radial-gradient(3px 3px at 35% 75%, rgba(150, 220, 255, 1), transparent),
+                radial-gradient(2px 2px at 55% 35%, rgba(140, 210, 255, 1), transparent),
+                radial-gradient(3px 3px at 95% 45%, rgba(160, 220, 250, 0.9), transparent),
+                radial-gradient(4px 4px at 10% 25%, rgba(130, 205, 255, 1), transparent),
+                radial-gradient(2px 2px at 48% 78%, rgba(145, 215, 255, 1), transparent),
+                radial-gradient(3px 3px at 72% 55%, rgba(155, 218, 250, 0.9), transparent),
+                radial-gradient(2px 2px at 33% 15%, rgba(165, 222, 255, 1), transparent),
+                radial-gradient(4px 4px at 88% 82%, rgba(125, 200, 250, 1), transparent),
+                radial-gradient(3px 3px at 18% 48%, rgba(170, 225, 255, 0.9), transparent);
+            background-size: 200% 200%;
+            animation: fireflies 15s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes fireflies {
+            0%, 100% {
+                background-position:
+                    0% 0%, 100% 100%, 50% 50%, 80% 20%, 20% 80%,
+                    60% 40%, 40% 60%, 90% 10%, 10% 90%, 70% 30%,
+                    30% 50%, 80% 70%, 15% 35%, 65% 85%, 45% 25%,
+                    55% 45%, 92% 38%, 12% 22%, 52% 82%, 68% 58%,
+                    38% 12%, 85% 88%, 22% 52%;
+                opacity: 0.7;
+            }
+            25% {
+                background-position:
+                    100% 0%, 0% 100%, 60% 40%, 70% 30%, 30% 70%,
+                    50% 50%, 50% 50%, 80% 20%, 20% 80%, 60% 40%,
+                    40% 60%, 90% 60%, 25% 45%, 75% 95%, 55% 15%,
+                    65% 55%, 88% 48%, 18% 32%, 58% 88%, 74% 64%,
+                    44% 18%, 91% 92%, 28% 58%;
+                opacity: 1;
+            }
+            50% {
+                background-position:
+                    100% 100%, 0% 0%, 70% 30%, 60% 40%, 40% 60%,
+                    40% 60%, 60% 40%, 70% 30%, 30% 70%, 50% 50%,
+                    50% 70%, 85% 50%, 35% 55%, 85% 5%, 45% 35%,
+                    75% 65%, 94% 58%, 24% 42%, 64% 94%, 80% 70%,
+                    50% 24%, 97% 98%, 34% 64%;
+                opacity: 0.8;
+            }
+            75% {
+                background-position:
+                    0% 100%, 100% 0%, 40% 60%, 50% 50%, 50% 50%,
+                    30% 70%, 70% 30%, 60% 40%, 40% 60%, 80% 20%,
+                    20% 80%, 75% 40%, 45% 65%, 95% 15%, 35% 45%,
+                    85% 75%, 90% 68%, 30% 52%, 70% 100%, 86% 76%,
+                    56% 30%, 93% 4%, 40% 70%;
+                opacity: 0.9;
+            }
+        }
+
+        /* コンテンツを前面に */
+        header, section, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* RPGスタイルのボーダー */
+        .rpg-border {
+            border: 4px solid var(--game-gold);
+            border-image: repeating-linear-gradient(
+                45deg,
+                var(--game-gold) 0,
+                var(--game-gold) 10px,
+                var(--game-bronze) 10px,
+                var(--game-bronze) 20px
+            ) 4;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5),
+                        inset 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        /* ゲームカードスタイル */
+        .game-card {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(15, 52, 96, 0.9) 100%);
+            border: 3px solid var(--game-gold);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
+                        0 0 20px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .game-card:hover {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7),
+                        0 0 40px rgba(255, 215, 0, 0.6);
+        }
+
+        /* コーナー装飾 */
+        .corner-decoration {
             position: absolute;
             width: 20px;
-            height: 25px;
-            background-color: #4CAF50;
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            height: 20px;
+            border: 3px solid var(--game-gold);
         }
-        .butterfly-wing.left {
-            left: 5px;
-            transform: rotate(-30deg);
+
+        .corner-decoration.top-left {
+            top: -3px;
+            left: -3px;
+            border-right: none;
+            border-bottom: none;
         }
-        .butterfly-wing.right {
-            right: 5px;
-            transform: rotate(30deg);
+
+        .corner-decoration.top-right {
+            top: -3px;
+            right: -3px;
+            border-left: none;
+            border-bottom: none;
         }
-        .butterfly-body {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 30px;
-            background-color: #228B22;
+
+        .corner-decoration.bottom-left {
+            bottom: -3px;
+            left: -3px;
+            border-right: none;
+            border-top: none;
         }
-        .section {
-            padding: 4rem 1rem;
+
+        .corner-decoration.bottom-right {
+            bottom: -3px;
+            right: -3px;
+            border-left: none;
+            border-top: none;
         }
-        .header-link {
+
+        /* エンブレムスタイル */
+        .emblem {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #FF6B35 0%, #D84315 70%, var(--game-dark) 100%);
+            border: 5px solid #FF6B35;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.8),
+                        inset 0 0 20px rgba(255, 107, 53, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--game-dark);
+            margin: 0 auto 1.5rem;
             position: relative;
         }
-        .header-link:after {
+
+        .emblem::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            display: block;
-            margin-top: 2px;
-            right: 0;
-            background: #4CAF50;
-            transition: width 0.3s ease;
+            inset: -10px;
+            border: 2px solid #FF6B35;
+            border-radius: 50%;
+            opacity: 0.5;
         }
-        .header-link:hover:after {
-            width: 100%;
+
+        /* サービスアイコン用 */
+        .service-emblem {
+            background: radial-gradient(circle, #4CAF50 0%, #2E7D32 70%, var(--game-dark) 100%);
+            border: 5px solid #4CAF50;
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.8),
+                        inset 0 0 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .service-emblem::after {
+            border: 2px solid #4CAF50;
+        }
+
+        /* UXアイコン用 */
+        .ux-emblem {
+            background: radial-gradient(circle, #4CAF50 0%, #2E7D32 70%, var(--game-dark) 100%);
+            border: 5px solid #4CAF50;
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.8),
+                        inset 0 0 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .ux-emblem::after {
+            border: 2px solid #4CAF50;
+        }
+
+        /* 技術力アイコン用 */
+        .tech-emblem {
+            background: radial-gradient(circle, #2196F3 0%, #1565C0 70%, var(--game-dark) 100%);
+            border: 5px solid #2196F3;
+            box-shadow: 0 0 30px rgba(33, 150, 243, 0.8),
+                        inset 0 0 20px rgba(33, 150, 243, 0.4);
+        }
+
+        .tech-emblem::after {
+            border: 2px solid #2196F3;
+        }
+
+        /* ゲームタイトルフォント */
+        .game-title {
+            font-family: 'Press Start 2P', 'Noto Sans JP', cursive;
+            font-size: clamp(2rem, 8vw, 5rem);
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--game-gold) 0%, var(--game-cyan) 50%, var(--game-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.7));
+            letter-spacing: 4px;
+        }
+
+        .section-title {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--game-gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8),
+                         2px 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* ヘッダー */
+        header {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(15, 52, 96, 0.95) 100%);
+            border-bottom: 3px solid var(--game-gold);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-link {
+            color: var(--game-gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-link:hover {
+            border-color: var(--game-gold);
+            background: rgba(255, 215, 0, 0.1);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+
+        /* ゲームボタン */
+        .game-button {
+            background: linear-gradient(135deg, var(--game-gold) 0%, var(--game-bronze) 100%);
+            color: var(--game-dark);
+            font-weight: 900;
+            font-size: 1.25rem;
+            padding: 1rem 2.5rem;
+            border: 4px solid var(--game-gold);
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5),
+                        0 0 20px rgba(255, 215, 0, 0.5),
+                        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+            transition: all 0.2s;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .game-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7),
+                        0 0 30px rgba(255, 215, 0, 0.8);
+        }
+
+        .game-button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5),
+                        0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        /* ステータスバー風のリスト */
+        .stat-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.75rem;
+            color: #e0e0e0;
+        }
+
+        .stat-list li::before {
+            content: '▶';
+            position: absolute;
             left: 0;
-            background: #4CAF50;
+            color: var(--game-cyan);
+            text-shadow: 0 0 10px rgba(0, 245, 255, 0.8);
         }
-        @media print {
-            .section {
-                page-break-inside: avoid;
+
+        /* HP/MPバー風の装飾 */
+        .info-bar {
+            background: linear-gradient(90deg, var(--game-cyan) 0%, var(--game-purple) 100%);
+            height: 4px;
+            width: 100%;
+            margin-top: 1rem;
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+            border-radius: 2px;
+        }
+
+        /* テーブルスタイル */
+        .game-table {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(15, 52, 96, 0.9) 100%);
+            border: 3px solid var(--game-gold);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-table tr {
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .game-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .game-table th {
+            background: linear-gradient(135deg, var(--game-gold) 0%, var(--game-bronze) 100%);
+            color: var(--game-dark);
+            font-weight: 900;
+            padding: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .game-table td {
+            padding: 1.5rem;
+            color: #e0e0e0;
+        }
+
+        /* フォーム */
+        .game-input {
+            background: rgba(26, 26, 46, 0.8);
+            border: 3px solid var(--game-gold);
+            color: #ffffff;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-input:focus {
+            outline: none;
+            border-color: var(--game-cyan);
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.5),
+                        inset 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* セクション区切り */
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, var(--game-gold) 20%, var(--game-cyan) 50%, var(--game-gold) 80%, transparent 100%);
+            margin: 3rem 0;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        /* ピクセルアート風の蝶 */
+        .pixel-butterfly {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background:
+                linear-gradient(var(--game-gold), var(--game-gold)) 26px 0/8px 40px,
+                linear-gradient(#57b15a, #57b15a) 6px 10px/18px 15px,
+                linear-gradient(#57b15a, #57b15a) 36px 10px/18px 15px,
+                linear-gradient(#80E0C0, #80E0C0) 10px 27px/14px 10px,
+                linear-gradient(#80E0C0, #80E0C0) 36px 27px/14px 10px;
+            background-repeat: no-repeat;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+            image-rendering: pixelated;
+        }
+
+        /* アニメーション */
+        @keyframes pixelGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
             }
+            50% {
+                filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.8));
+            }
+        }
+
+        .pixel-butterfly {
+            animation: pixelGlow 2s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="butterfly-bg">
+<body>
     <!-- Header -->
-    <header class="fixed w-full bg-white shadow-md z-50">
-        <div class="container mx-auto px-4 py-3">
+    <header class="fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <div class="butterfly-icon mr-2">
-                        <div class="butterfly-wing left"></div>
-                        <div class="butterfly-wing right"></div>
-                        <div class="butterfly-body"></div>
-                    </div>
-                    <div>
-                        <h1 class="text-lg font-bold">Verdafly</h1>
-                        <p class="text-xs text-gray-400">ヴァダフライ</p>
-                    </div>
+                    <div class="pixel-butterfly mr-4"></div>
+                    <h1 class="text-2xl font-bold game-title" style="font-size: 1.5rem; letter-spacing: 2px;">Verdafly</h1>
                 </div>
                 <nav class="hidden md:block">
-                    <ul class="flex space-x-8">
-                        <li><a href="#about" class="header-link text-gray-800 hover:text-green-600">会社概要</a></li>
-                        <li><a href="#services" class="header-link text-gray-800 hover:text-green-600">事業内容</a></li>
-                        <li><a href="#company" class="header-link text-gray-800 hover:text-green-600">会社情報</a></li>
-                        <li><a href="#contact" class="header-link text-gray-800 hover:text-green-600">お問い合わせ</a></li>
+                    <ul class="flex space-x-4">
+                        <li><a href="#services" class="nav-link">事業内容</a></li>
+                        <li><a href="#about" class="nav-link">会社概要</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
                     </ul>
                 </nav>
                 <div class="md:hidden">
-                    <button id="menu-toggle" class="focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
+                    <button id="menu-toggle" class="focus:outline-none" style="color: var(--game-gold);">
+                        <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
@@ -115,173 +474,99 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white z-40 hidden pt-16">
+    <div id="mobile-menu" class="fixed inset-0 z-40 hidden pt-20" style="background: linear-gradient(135deg, rgba(26, 26, 46, 0.98) 0%, rgba(15, 52, 96, 0.98) 100%);">
         <div class="container mx-auto px-4 py-8">
             <ul class="space-y-6 text-center">
-                <li><a href="#about" class="text-xl block py-2">会社概要</a></li>
-                <li><a href="#services" class="text-xl block py-2">事業内容</a></li>
-                <li><a href="#company" class="text-xl block py-2">会社情報</a></li>
-                <li><a href="#contact" class="text-xl block py-2">お問い合わせ</a></li>
+                <li><a href="#services" class="text-2xl block py-3 nav-link">事業内容</a></li>
+                <li><a href="#about" class="text-2xl block py-3 nav-link">会社概要</a></li>
+                <li><a href="#contact" class="text-2xl block py-3 nav-link">Contact</a></li>
             </ul>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 md:pt-40 md:pb-32 text-center">
-        <div class="container mx-auto px-4">
-            <div class="relative inline-block mb-6">
-                <div class="butterfly-icon" style="width: 80px; height: 80px; margin: 0 auto;">
-                    <div class="butterfly-wing left" style="width: 40px; height: 50px;"></div>
-                    <div class="butterfly-wing right" style="width: 40px; height: 50px;"></div>
-                    <div class="butterfly-body" style="width: 8px; height: 60px;"></div>
-                </div>
+    <section class="min-h-screen flex items-center justify-center py-32 px-4">
+        <div class="container mx-auto text-center">
+            <div class="mb-8 floating">
+                <div class="pixel-butterfly" style="width: 120px; height: 120px; margin: 0 auto;"></div>
             </div>
-            <h2 class="text-4xl md:text-6xl font-bold verdafly-green mb-4">Verdafly</h2>
-            <p class="text-xl md:text-2xl text-gray-700 mb-8">デジタルの翼でエンターテイメントの未来へ</p>
-            <div class="max-w-3xl mx-auto">
-                <p class="text-gray-600 mb-10">デジタルコンテンツの開発を通じて、エキサイティングな体験と感動を創造します。</p>
-                <a href="#contact" class="inline-block verdafly-bg text-white font-medium py-3 px-8 rounded-full shadow-md hover:bg-green-700 transition duration-300">お問い合わせ</a>
-            </div>
+            <h2 class="game-title mb-8">Verdafly</h2>
+            <p class="text-3xl md:text-4xl font-bold mb-12" style="color: var(--game-cyan); text-shadow: 0 0 20px rgba(0, 245, 255, 0.5), 2px 2px 4px rgba(0, 0, 0, 0.8);">
+                デジタルの翅でエンターテイメントの未来を羽ばたく
+            </p>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">会社概要</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="flex flex-col md:flex-row items-center mb-12">
-                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-                        <h3 class="text-2xl font-bold verdafly-green mb-4">Verdaflyについて</h3>
-                        <p class="text-gray-700 mb-4">Verdaflyは「Verda（緑）」と「fly（飛ぶ）」を組み合わせた名であり"心地良さを運ぶ"という意味を込めています。</p>
-                        <p class="text-gray-700">私たちは技術と創造性を融合させ、ユーザーに新たな心地良い体験をお届けすることを使命としています。</p>
-                    </div>
-                    <div class="md:w-1/2">
-                        <div class="relative p-6 bg-green-50 rounded-lg">
-                            <div class="butterfly-icon absolute -top-5 -left-5">
-                                <div class="butterfly-wing left"></div>
-                                <div class="butterfly-wing right"></div>
-                                <div class="butterfly-body"></div>
-                            </div>
-                            <h4 class="text-xl font-bold mb-4">ミッション</h4>
-                            <p class="text-gray-700 mb-6">テクノロジーと創造性の融合により、人々の日常に心地良い潤いをもたらす体験を連続的に創出する。</p>
-                            <h4 class="text-xl font-bold mb-4">ビジョン</h4>
-                            <p class="text-gray-700">ちょうどいいシンプルな心地良さのコンテンツ世界観を構築する。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <h3 class="text-2xl font-bold verdafly-green mb-6">私たちの強み</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                            <div class="text-green-500 text-3xl mb-4">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h4 class="text-xl font-bold mb-3">創造性</h4>
-                            <p class="text-gray-700">従来の枠を超えた発想と革新的なアイデアで、新しいエンターテイメント体験を創造します。</p>
-                        </div>
-                        <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                            <div class="text-green-500 text-3xl mb-4">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h4 class="text-xl font-bold mb-3">技術力</h4>
-                            <p class="text-gray-700">最新のデジタル技術を駆使し、高品質で没入感のあるコンテンツを開発します。</p>
-                        </div>
-                        <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                            <div class="text-green-500 text-3xl mb-4">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h4 class="text-xl font-bold mb-3">ユーザー体験</h4>
-                            <p class="text-gray-700">ユーザーの視点に立ち、使いやすさと楽しさを追求したコンテンツ設計を行います。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="section-divider"></div>
 
     <!-- Services Section -->
-    <section id="services" class="section butterfly-bg">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">事業内容</h2>
-            <div class="max-w-5xl mx-auto">
-                <p class="text-center text-gray-700 mb-12">以下のデジタルエンターテイメントコンテンツ開発サービスを提供しています。</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                        <div class="text-green-500 text-4xl mb-4">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4">デジタルゲーム開発</h3>
-                        <p class="text-gray-700 mb-4">PCやモバイル向けの魅力的なゲームコンテンツを企画・開発します。ユーザーの心をつかむゲームプレイと、没入感のある体験を提供します。</p>
-                        <ul class="text-gray-700 space-y-2">
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>TRPG</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>アドベンチャーゲーム</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>シミュレーションゲーム</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>パズルゲーム</li>
+    <section id="services" class="py-20 px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title">事業内容</h2>
+                <p class="text-xl text-gray-300 mt-6">以下のデジタルエンターテイメントコンテンツ開発サービスを提供しています。</p>
+            </div>
+
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="game-card">
+                        <h3 class="text-4xl font-bold mb-4 text-center" style="color: var(--game-gold);">デジタルゲーム開発</h3>
+                        <p class="text-gray-300 text-lg mb-4">PCやモバイル向けの魅力的なゲームコンテンツを企画・開発します。</p>
+                        <ul class="stat-list">
+                            <li>TRPG</li>
+                            <li>アドベンチャーゲーム</li>
+                            <li>シミュレーションゲーム</li>
+                            <li>パズルゲーム</li>
                         </ul>
                     </div>
 
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                        <div class="text-green-500 text-4xl mb-4">
-                            <i class="fas fa-book-reader"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4">テキストコンテンツ開発</h3>
-                        <p class="text-gray-700 mb-4">テキストを主体とした、エンターテイメントコンテンツを開発します。ユーザーの想像力やユーモアを刺激する、外連味のある物語を提供します。</p>
-                        <ul class="text-gray-700 space-y-2">
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>ノベル</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>サイエンス・ファンタジーフィクション</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>ゲームブック</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>マテリアル</li>
+                    <div class="game-card">
+                        <h3 class="text-4xl font-bold mb-4 text-center" style="color: var(--game-gold);">テキストコンテンツ開発</h3>
+                        <p class="text-gray-300 text-lg mb-4">ユーザーの想像力やユーモアを刺激する、外連味のある物語を提供します。</p>
+                        <ul class="stat-list">
+                            <li>ノベル</li>
+                            <li>サイエンス・ファンタジーフィクション</li>
+                            <li>ゲームブック</li>
+                            <li>マテリアル</li>
                         </ul>
                     </div>
 
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                        <div class="text-green-500 text-4xl mb-4">
-                            <i class="fas fa-vr-cardboard"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4">サウンドコンテンツ開発</h3>
-                        <p class="text-gray-700 mb-4">音を主体とした没入型エンターテイメントコンテンツを開発します。ユーザーが音の世界にどっぷり浸かれる、質の高い音の世界を提供します。</p>
-                        <ul class="text-gray-700 space-y-2">
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>音声ドラマ</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>Podcast</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>物語朗読</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>楽曲カバー</li>
+                    <div class="game-card">
+                        <h3 class="text-4xl font-bold mb-4 text-center" style="color: var(--game-gold);">サウンドコンテンツ開発</h3>
+                        <p class="text-gray-300 text-lg mb-4">音を主体とした没入型エンターテイメントコンテンツを開発します。</p>
+                        <ul class="stat-list">
+                            <li>音声ドラマ</li>
+                            <li>Podcast</li>
+                            <li>物語朗読</li>
+                            <li>楽曲カバー</li>
                         </ul>
                     </div>
 
-                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                        <div class="text-green-500 text-4xl mb-4">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4">モバイルアプリ開発</h3>
-                        <p class="text-gray-700 mb-4">エンターテイメント性の高いモバイルアプリケーションを企画・開発。使いやすさと楽しさを両立したアプリを提供します。</p>
-                        <ul class="text-gray-700 space-y-2">
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>エンターテイメントアプリ</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>ライフスタイルアプリ</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>教育・学習アプリ</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>ユーティリティアプリ</li>
+                    <div class="game-card">
+                        <h3 class="text-4xl font-bold mb-4 text-center" style="color: var(--game-gold);">モバイルアプリ開発</h3>
+                        <p class="text-gray-300 text-lg mb-4">使いやすさと楽しさを両立したアプリを提供します。</p>
+                        <ul class="stat-list">
+                            <li>エンターテイメントアプリ</li>
+                            <li>ライフスタイルアプリ</li>
+                            <li>教育・学習アプリ</li>
+                            <li>ユーティリティアプリ</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                    <div class="text-green-500 text-4xl mb-4">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">ソリューション提供</h3>
-                    <p class="text-gray-700 mb-4">デジタルエンターテイメント分野におけるさまざまな課題解決のためのソリューションを提供します。</p>
+                <div class="game-card">
+                    <h3 class="text-4xl font-bold mb-4 text-center" style="color: var(--game-gold);">ソリューション提供</h3>
+                    <p class="text-gray-300 text-lg mb-6">デジタルエンターテイメント分野におけるさまざまな課題解決のためのソリューションを提供します。</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <ul class="text-gray-700 space-y-2">
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>コンテンツ配信プラットフォームコンサルティング</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>エンターテイメントコンテンツコンサルティング</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>コンテンツ開発支援</li>
+                        <ul class="stat-list">
+                            <li>コンテンツ配信プラットフォームコンサルティング</li>
+                            <li>エンターテイメントコンテンツコンサルティング</li>
+                            <li>コンテンツ開発支援</li>
                         </ul>
-                        <ul class="text-gray-700 space-y-2">
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>ユーザー体験最適化</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>レガシーコンテンツのデジタル変換支援</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>コンテンツリメイク</li>
+                        <ul class="stat-list">
+                            <li>ユーザー体験最適化</li>
+                            <li>レガシーコンテンツのデジタル変換支援</li>
+                            <li>コンテンツリメイク</li>
                         </ul>
                     </div>
                 </div>
@@ -289,36 +574,87 @@
         </div>
     </section>
 
-    <!-- Company Information Section -->
-    <section id="company" class="section butterfly-bg">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">会社情報</h2>
-            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
-                <table class="w-full border-collapse">
+    <div class="section-divider"></div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title">会社概要</h2>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h3 class="text-4xl font-bold" style="color: var(--game-gold); text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">Vision</h3>
+                </div>
+                <div class="game-card mb-16" style="background: linear-gradient(135deg, rgba(157, 78, 221, 0.3) 0%, rgba(0, 245, 255, 0.3) 100%);">
+                    <div class="corner-decoration top-left"></div>
+                    <div class="corner-decoration top-right"></div>
+                    <div class="corner-decoration bottom-left"></div>
+                    <div class="corner-decoration bottom-right"></div>
+                    <p class="text-2xl text-center" style="color: var(--game-cyan); font-weight: 700;">シンプルで心地よいコンテンツが、いつでも手に入る世界の実現</p>
+                </div>
+                <div class="text-center mb-12">
+                    <h3 class="text-4xl font-bold" style="color: var(--game-gold); text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">Mission</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="game-card" style="background: linear-gradient(135deg, rgba(157, 78, 221, 0.3) 0%, rgba(0, 245, 255, 0.3) 100%);">
+                        <div class="corner-decoration top-left"></div>
+                        <div class="corner-decoration top-right"></div>
+                        <div class="corner-decoration bottom-left"></div>
+                        <div class="corner-decoration bottom-right"></div>
+                        <h4 class="text-2xl font-bold mb-4 text-center" style="color: var(--game-cyan);">プリミティブ</h4>
+                        <p class="text-gray-200 text-lg text-center">根源的な愉しさがあること</p>
+                    </div>
+                    <div class="game-card" style="background: linear-gradient(135deg, rgba(157, 78, 221, 0.3) 0%, rgba(0, 245, 255, 0.3) 100%);">
+                        <div class="corner-decoration top-left"></div>
+                        <div class="corner-decoration top-right"></div>
+                        <div class="corner-decoration bottom-left"></div>
+                        <div class="corner-decoration bottom-right"></div>
+                        <h4 class="text-2xl font-bold mb-4 text-center" style="color: var(--game-cyan);">エッセンシャル</h4>
+                        <p class="text-gray-200 text-lg text-center">適切な要素と量であること</p>
+                    </div>
+                    <div class="game-card" style="background: linear-gradient(135deg, rgba(157, 78, 221, 0.3) 0%, rgba(0, 245, 255, 0.3) 100%);">
+                        <div class="corner-decoration top-left"></div>
+                        <div class="corner-decoration top-right"></div>
+                        <div class="corner-decoration bottom-left"></div>
+                        <div class="corner-decoration bottom-right"></div>
+                        <h4 class="text-2xl font-bold mb-4 text-center" style="color: var(--game-cyan);">サステナブル</h4>
+                        <p class="text-gray-200 text-lg text-center">健やかに生産し続けること</p>
+                    </div>
+                </div>
+
+                <div class="text-center mb-12 mt-16">
+                    <h3 class="text-4xl font-bold" style="color: var(--game-gold); text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);">Info</h3>
+                </div>
+
+                <div class="max-w-4xl mx-auto game-table">
+                <table class="w-full">
                     <tbody>
-                        <tr class="border-b border-gray-200">
-                            <th class="py-4 px-2 text-left text-gray-700 font-semibold w-1/3">会社名</th>
-                            <td class="py-4 px-2 text-gray-800">合同会社緑蝶（みどりちょう）<br>Midoricho LLC</td>
-                        </tr>
-                        <tr class="border-b border-gray-200">
-                            <th class="py-4 px-2 text-left text-gray-700 font-semibold">ブランド名</th>
-                            <td class="py-4 px-2 text-gray-800">Verdafly（ヴァダフライ）</td>
-                        </tr>
-                        <tr class="border-b border-gray-200">
-                            <th class="py-4 px-2 text-left text-gray-700 font-semibold">設立</th>
-                            <td class="py-4 px-2 text-gray-800">令和7年1月31日（2025年1月31日）</td>
-                        </tr>
-                        <tr class="border-b border-gray-200">
-                            <th class="py-4 px-2 text-left text-gray-700 font-semibold">事業内容</th>
-                            <td class="py-4 px-2 text-gray-800">デジタルエンターテイメントコンテンツの開発</td>
-                        </tr>
-                        <tr class="border-b border-gray-200">
-                            <th class="py-4 px-2 text-left text-gray-700 font-semibold">本社所在地</th>
-                            <td class="py-4 px-2 text-gray-800">〒359-1111<br>埼玉県所沢市緑町4-20-27</td>
+                        <tr>
+                            <th class="text-left w-1/3">会社名</th>
+                            <td>合同会社緑蝶（みどりちょう）<br>Midoricho LLC</td>
                         </tr>
                         <tr>
-                            <th class="py-4 px-2 text-left text-gray-700 font-semibold">法人番号</th>
-                            <td class="py-4 px-2 text-gray-800">5030003026027</td>
+                            <th class="text-left">ブランド名</th>
+                            <td>VERDAFLY（ヴァダフライ）</td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">設立</th>
+                            <td>令和7年1月31日（2025年1月31日）</td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">事業内容</th>
+                            <td>デジタルエンターテイメントコンテンツの開発</td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">本社所在地</th>
+                            <td>〒359-1111<br>埼玉県所沢市緑町4-20-27</td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">法人番号</th>
+                            <td>5030003026027</td>
                         </tr>
                     </tbody>
                 </table>
@@ -326,86 +662,74 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- Contact Section -->
-    <section id="contact" class="section bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">お問い合わせ</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="max-w-2xl mx-auto bg-gray-50 p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-6"></h3>
-                    <form>
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 mb-2">お名前 <span class="text-red-500">*</span></label>
-                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                        </div>
-                        <div class="mb-4">
-                            <label for="email" class="block text-gray-700 mb-2">メールアドレス <span class="text-red-500">*</span></label>
-                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                        </div>
-                        <div class="mb-4">
-                            <label for="subject" class="block text-gray-700 mb-2">件名</label>
-                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
-                        </div>
-                        <div class="mb-6">
-                            <label for="message" class="block text-gray-700 mb-2">メッセージ <span class="text-red-500">*</span></label>
-                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
-                        </div>
-                        <div class="text-right">
-                            <button type="submit" class="verdafly-bg text-white font-medium py-2 px-6 rounded-md shadow-md hover:bg-green-700 transition duration-300">送信する</button>
-                        </div>
-                    </form>
-                </div>
+    <section id="contact" class="py-20 px-4 pb-32">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Send Message</h2>
+            </div>
+            <div class="max-w-2xl mx-auto game-card">
+                <form>
+                    <div class="mb-6">
+                        <label for="name" class="block text-lg font-bold mb-2" style="color: var(--game-gold);">Name <span style="color: #ff6b6b;">*</span></label>
+                        <input type="text" id="name" class="game-input w-full" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-lg font-bold mb-2" style="color: var(--game-gold);">Email <span style="color: #ff6b6b;">*</span></label>
+                        <input type="email" id="email" class="game-input w-full" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="subject" class="block text-lg font-bold mb-2" style="color: var(--game-gold);">Subject</label>
+                        <input type="text" id="subject" class="game-input w-full">
+                    </div>
+                    <div class="mb-8">
+                        <label for="message" class="block text-lg font-bold mb-2" style="color: var(--game-gold);">Message <span style="color: #ff6b6b;">*</span></label>
+                        <textarea id="message" rows="6" class="game-input w-full" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="game-button">
+                            Send <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
+    <footer class="py-12" style="background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(15, 52, 96, 0.95) 100%); border-top: 3px solid var(--game-gold);">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between">
+            <div class="flex flex-col md:flex-row justify-between mb-8">
                 <div class="mb-8 md:mb-0">
                     <div class="flex items-center mb-4">
-                        <div class="butterfly-icon mr-2">
-                            <div class="butterfly-wing left"></div>
-                            <div class="butterfly-wing right"></div>
-                            <div class="butterfly-body"></div>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold">Verdafly</h3>
-                            <p class="text-sm text-gray-100">ヴァダフライ</p>
-                        </div>
+                        <div class="pixel-butterfly mr-3"></div>
+                        <h3 class="text-2xl font-bold game-title" style="font-size: 1.5rem; letter-spacing: 2px;">Verdafly</h3>
                     </div>
-                    <p class="text-gray-400 max-w-md">デジタルエンターテイメントコンテンツの開発を通じて、新たな体験と感動を創造します。</p>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-2 gap-12">
                     <div>
-                        <h4 class="text-lg font-bold mb-4">サイトマップ</h4>
+                        <h4 class="text-xl font-bold mb-4" style="color: var(--game-gold);">Index</h4>
                         <ul class="space-y-2">
-                            <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">会社概要</a></li>
-                            <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">事業内容</a></li>
-                            <li><a href="#company" class="text-gray-400 hover:text-white transition duration-300">会社情報</a></li>
-                            <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">お問い合わせ</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-cyan-300 transition duration-300">事業内容</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-cyan-300 transition duration-300">会社概要</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-cyan-300 transition duration-300">Contact</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold mb-4">サービス</h4>
+                        <h4 class="text-xl font-bold mb-4" style="color: var(--game-gold);">事業内容</h4>
                         <ul class="space-y-2">
-                            <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">デジタルゲーム開発</a></li>
-                            <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">インタラクティブコンテンツ</a></li>
-                            <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">音声コンテンツ開発</a></li>
-                            <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">モバイルアプリ開発</a></li>
-                            <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">ソリューション提供</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-bold mb-4">お問い合わせ</h4>
-                        <ul class="space-y-2">
-                            </li>
+                            <li><a href="#services" class="text-gray-400 hover:text-cyan-300 transition duration-300">デジタルゲーム開発</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-cyan-300 transition duration-300">テキストコンテンツ開発</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-cyan-300 transition duration-300">サウンドコンテンツ開発</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-cyan-300 transition duration-300">モバイルアプリ開発</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-cyan-300 transition duration-300">ソリューション提供</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="mt-12 pt-8 border-t border-gray-700 text-center">
+            <div class="pt-8 text-center" style="border-top: 2px solid rgba(255, 215, 0, 0.3);">
                 <p class="text-gray-400">&copy; 2025 合同会社緑蝶 All Rights Reserved.</p>
             </div>
         </div>
@@ -415,31 +739,28 @@
         // Mobile menu toggle
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+
         menuToggle.addEventListener('click', function() {
             mobileMenu.classList.toggle('hidden');
         });
-        
-        // Close mobile menu when clicking menu items
+
         const mobileMenuItems = mobileMenu.querySelectorAll('a');
         mobileMenuItems.forEach(item => {
             item.addEventListener('click', function() {
                 mobileMenu.classList.add('hidden');
             });
         });
-        
-        // Smooth scrolling for anchor links
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                const headerHeight = 80; // Adjust based on your header height
+                const headerHeight = 80;
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                
+
                 if (targetElement) {
                     const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'

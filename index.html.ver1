@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verdafly - デジタルエンターテイメントコンテンツ開発</title>
+    <meta name="description" content="デジタルエンターテイメントコンテンツの開発を行っています。">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .butterfly-bg {
+            background-color: rgba(76, 175, 80, 0.05);
+            background-image: url("data:image/svg+xml,%3Csvg width='52' height='52' viewBox='0 0 52 52' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M26 26c0-2 2-4 4-4s4 2 4 4-2 4-4 4-4-2-4-4z' fill='%234caf50' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        .verdafly-green {
+            color: #228B22;
+        }
+        .verdafly-bg {
+            background-color: #228B22;
+        }
+        .butterfly-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+        .butterfly-wing {
+            position: absolute;
+            width: 20px;
+            height: 25px;
+            background-color: #4CAF50;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        }
+        .butterfly-wing.left {
+            left: 5px;
+            transform: rotate(-30deg);
+        }
+        .butterfly-wing.right {
+            right: 5px;
+            transform: rotate(30deg);
+        }
+        .butterfly-body {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 30px;
+            background-color: #228B22;
+        }
+        .section {
+            padding: 4rem 1rem;
+        }
+        .header-link {
+            position: relative;
+        }
+        .header-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 2px;
+            right: 0;
+            background: #4CAF50;
+            transition: width 0.3s ease;
+        }
+        .header-link:hover:after {
+            width: 100%;
+            left: 0;
+            background: #4CAF50;
+        }
+        @media print {
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="butterfly-bg">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="butterfly-icon mr-2">
+                        <div class="butterfly-wing left"></div>
+                        <div class="butterfly-wing right"></div>
+                        <div class="butterfly-body"></div>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold">Verdafly</h1>
+                        <p class="text-xs text-gray-400">ヴァダフライ</p>
+                    </div>
+                </div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="#about" class="header-link text-gray-800 hover:text-green-600">会社概要</a></li>
+                        <li><a href="#services" class="header-link text-gray-800 hover:text-green-600">事業内容</a></li>
+                        <li><a href="#company" class="header-link text-gray-800 hover:text-green-600">会社情報</a></li>
+                        <li><a href="#contact" class="header-link text-gray-800 hover:text-green-600">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-40 hidden pt-16">
+        <div class="container mx-auto px-4 py-8">
+            <ul class="space-y-6 text-center">
+                <li><a href="#about" class="text-xl block py-2">会社概要</a></li>
+                <li><a href="#services" class="text-xl block py-2">事業内容</a></li>
+                <li><a href="#company" class="text-xl block py-2">会社情報</a></li>
+                <li><a href="#contact" class="text-xl block py-2">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 md:pt-40 md:pb-32 text-center">
+        <div class="container mx-auto px-4">
+            <div class="relative inline-block mb-6">
+                <div class="butterfly-icon" style="width: 80px; height: 80px; margin: 0 auto;">
+                    <div class="butterfly-wing left" style="width: 40px; height: 50px;"></div>
+                    <div class="butterfly-wing right" style="width: 40px; height: 50px;"></div>
+                    <div class="butterfly-body" style="width: 8px; height: 60px;"></div>
+                </div>
+            </div>
+            <h2 class="text-4xl md:text-6xl font-bold verdafly-green mb-4">Verdafly</h2>
+            <p class="text-xl md:text-2xl text-gray-700 mb-8">デジタルの翅でエンターテイメントの未来を羽ばたく</p>
+            <div class="max-w-3xl mx-auto">
+                <p class="text-gray-600 mb-10">かつてないコンテンツで、エキサイティングな体験と感動を創造する。</p>
+                <a href="#contact" class="inline-block verdafly-bg text-white font-medium py-3 px-8 rounded-full shadow-md hover:bg-green-700 transition duration-300">お問い合わせ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">会社概要</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center mb-12">
+                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                        <h3 class="text-2xl font-bold verdafly-green mb-4">Verdaflyについて</h3>
+                        <p class="text-gray-700 mb-4">Verdaflyは「Verda（緑）」と「fly（飛ぶ）」を組み合わせた名であり"心地良さを運ぶ"という意味を込めています。</p>
+                        <p class="text-gray-700">私たちは技術と創造性を融合させ、ユーザーに新たな心地良い体験をお届けすることを使命としています。</p>
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="relative p-6 bg-green-50 rounded-lg">
+                            <div class="butterfly-icon absolute -top-5 -left-5">
+                                <div class="butterfly-wing left"></div>
+                                <div class="butterfly-wing right"></div>
+                                <div class="butterfly-body"></div>
+                            </div>
+                            <h4 class="text-xl font-bold mb-4">ミッション</h4>
+                            <p class="text-gray-700 mb-6">テクノロジーと創造性の融合により、人々の日常に心地良い潤いをもたらす体験を連続的に創出する。</p>
+                            <h4 class="text-xl font-bold mb-4">ビジョン</h4>
+                            <p class="text-gray-700">ちょうどいいシンプルな心地良さのコンテンツ世界観を構築する。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold verdafly-green mb-6">私たちの強み</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div class="text-green-500 text-3xl mb-4">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3">創造性</h4>
+                            <p class="text-gray-700">従来の枠を超えた発想と革新的なアイデアで、新しいエンターテイメント体験を創造します。</p>
+                        </div>
+                        <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div class="text-green-500 text-3xl mb-4">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3">技術力</h4>
+                            <p class="text-gray-700">最新のデジタル技術を駆使し、高品質で没入感のあるコンテンツを開発します。</p>
+                        </div>
+                        <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div class="text-green-500 text-3xl mb-4">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-3">ユーザー体験</h4>
+                            <p class="text-gray-700">ユーザーの視点に立ち、使いやすさと楽しさを追求したコンテンツ設計を行います。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section butterfly-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">事業内容</h2>
+            <div class="max-w-5xl mx-auto">
+                <p class="text-center text-gray-700 mb-12">以下のデジタルエンターテイメントコンテンツ開発サービスを提供しています。</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="text-green-500 text-4xl mb-4">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">デジタルゲーム開発</h3>
+                        <p class="text-gray-700 mb-4">PCやモバイル向けの魅力的なゲームコンテンツを企画・開発します。ユーザーの心をつかむゲームプレイと、没入感のある体験を提供します。</p>
+                        <ul class="text-gray-700 space-y-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>TRPG</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>アドベンチャーゲーム</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>シミュレーションゲーム</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>パズルゲーム</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="text-green-500 text-4xl mb-4">
+                            <i class="fas fa-book-reader"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">テキストコンテンツ開発</h3>
+                        <p class="text-gray-700 mb-4">テキストを主体とした、エンターテイメントコンテンツを開発します。ユーザーの想像力やユーモアを刺激する、外連味のある物語を提供します。</p>
+                        <ul class="text-gray-700 space-y-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>ノベル</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>サイエンス・ファンタジーフィクション</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>ゲームブック</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>マテリアル</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="text-green-500 text-4xl mb-4">
+                            <i class="fas fa-vr-cardboard"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">サウンドコンテンツ開発</h3>
+                        <p class="text-gray-700 mb-4">音を主体とした没入型エンターテイメントコンテンツを開発します。ユーザーが音の世界にどっぷり浸かれる、質の高い音の世界を提供します。</p>
+                        <ul class="text-gray-700 space-y-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>音声ドラマ</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Podcast</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>物語朗読</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>楽曲カバー</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="text-green-500 text-4xl mb-4">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">モバイルアプリ開発</h3>
+                        <p class="text-gray-700 mb-4">エンターテイメント性の高いモバイルアプリケーションを企画・開発。使いやすさと楽しさを両立したアプリを提供します。</p>
+                        <ul class="text-gray-700 space-y-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>エンターテイメントアプリ</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>ライフスタイルアプリ</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>教育・学習アプリ</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>ユーティリティアプリ</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-green-500 text-4xl mb-4">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">ソリューション提供</h3>
+                    <p class="text-gray-700 mb-4">デジタルエンターテイメント分野におけるさまざまな課題解決のためのソリューションを提供します。</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <ul class="text-gray-700 space-y-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>コンテンツ配信プラットフォームコンサルティング</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>エンターテイメントコンテンツコンサルティング</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>コンテンツ開発支援</li>
+                        </ul>
+                        <ul class="text-gray-700 space-y-2">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>ユーザー体験最適化</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>レガシーコンテンツのデジタル変換支援</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>コンテンツリメイク</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Information Section -->
+    <section id="company" class="section butterfly-bg">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">会社情報</h2>
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                <table class="w-full border-collapse">
+                    <tbody>
+                        <tr class="border-b border-gray-200">
+                            <th class="py-4 px-2 text-left text-gray-700 font-semibold w-1/3">会社名</th>
+                            <td class="py-4 px-2 text-gray-800">合同会社緑蝶（みどりちょう）<br>Midoricho LLC</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="py-4 px-2 text-left text-gray-700 font-semibold">ブランド名</th>
+                            <td class="py-4 px-2 text-gray-800">Verdafly（ヴァダフライ）</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="py-4 px-2 text-left text-gray-700 font-semibold">設立</th>
+                            <td class="py-4 px-2 text-gray-800">令和7年1月31日（2025年1月31日）</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="py-4 px-2 text-left text-gray-700 font-semibold">事業内容</th>
+                            <td class="py-4 px-2 text-gray-800">デジタルエンターテイメントコンテンツの開発</td>
+                        </tr>
+                        <tr class="border-b border-gray-200">
+                            <th class="py-4 px-2 text-left text-gray-700 font-semibold">本社所在地</th>
+                            <td class="py-4 px-2 text-gray-800">〒359-1111<br>埼玉県所沢市緑町4-20-27</td>
+                        </tr>
+                        <tr>
+                            <th class="py-4 px-2 text-left text-gray-700 font-semibold">法人番号</th>
+                            <td class="py-4 px-2 text-gray-800">5030003026027</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">お問い合わせ</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="max-w-2xl mx-auto bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-6"></h3>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 mb-2">お名前 <span class="text-red-500">*</span></label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 mb-2">メールアドレス <span class="text-red-500">*</span></label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-700 mb-2">件名</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 mb-2">メッセージ <span class="text-red-500">*</span></label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="verdafly-bg text-white font-medium py-2 px-6 rounded-md shadow-md hover:bg-green-700 transition duration-300">送信する</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center mb-4">
+                        <div class="butterfly-icon mr-2">
+                            <div class="butterfly-wing left"></div>
+                            <div class="butterfly-wing right"></div>
+                            <div class="butterfly-body"></div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Verdafly</h3>
+                            <p class="text-sm text-gray-100">ヴァダフライ</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 max-w-md">デジタルエンターテイメントコンテンツの開発を通じて、新たな体験と感動を創造します。</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">サイトマップ</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">会社概要</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">事業内容</a></li>
+                            <li><a href="#company" class="text-gray-400 hover:text-white transition duration-300">会社情報</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">お問い合わせ</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">サービス</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">デジタルゲーム開発</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">インタラクティブコンテンツ</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">音声コンテンツ開発</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">モバイルアプリ開発</a></li>
+                            <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">ソリューション提供</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold mb-4">お問い合わせ</h4>
+                        <ul class="space-y-2">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center">
+                <p class="text-gray-400">&copy; 2025 合同会社緑蝶 All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking menu items
+        const mobileMenuItems = mobileMenu.querySelectorAll('a');
+        mobileMenuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const headerHeight = 80; // Adjust based on your header height
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
