@@ -25,19 +25,19 @@
   <!-- 蝶の本体 -->
   <g id="butterfly">
     <!-- 上羽（左） -->
-    <rect x="6" y="10" width="18" height="15" fill="#57b15a"/>
+    <rect x="6" y="20" width="18" height="15" fill="#57b15a"/>
     
     <!-- 上羽（右） -->
-    <rect x="36" y="10" width="18" height="15" fill="#57b15a"/>
+    <rect x="36" y="20" width="18" height="15" fill="#57b15a"/>
     
     <!-- 下羽（左） -->
-    <rect x="10" y="27" width="14" height="10" fill="#80E0C0"/>
+    <rect x="10" y="37" width="14" height="10" fill="#57b15a"/>
     
     <!-- 下羽（右） -->
-    <rect x="36" y="27" width="14" height="10" fill="#80E0C0"/>
+    <rect x="36" y="37" width="14" height="10" fill="#57b15a"/>
     
     <!-- 胴体 -->
-    <rect x="26" y="0" width="8" height="40" fill="#FFD700"/>
+    <rect x="26" y="10" width="8" height="40" fill="#FFD700"/>
   </g>
   
   <!-- アニメーション付きの蝶（フェード効果） -->
