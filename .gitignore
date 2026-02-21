@@ -1,0 +1,26 @@
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Project Specific
+.claude/
+.playwright-mcp/
+node_modules/
+dist/
+build/
+
+# Backups and Scratch files
+*.ver1
+*.bak
+site.pen
+pencil-new.pen
+
+# Environments
+.env
+.env.*
