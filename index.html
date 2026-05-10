@@ -1046,8 +1046,6 @@
                 <div class="nav-right">
                     <nav class="nav-desktop">
                         <a href="#services" class="nav-link" data-i18n="nav.services">事業内容</a>
-                        <a href="#about" class="nav-link" data-i18n="nav.about">会社概要</a>
-                        <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
                     </nav>
                     <div class="lang-toggle">
                         <button class="lang-btn active" data-lang="ja">JP</button>
@@ -1066,8 +1064,6 @@
     <div class="mobile-menu" id="mobile-menu">
         <nav>
             <a href="#services" data-i18n="nav.services">事業内容</a>
-            <a href="#about" data-i18n="nav.about">会社概要</a>
-            <a href="#contact" data-i18n="nav.contact">Contact</a>
         </nav>
         <div class="mobile-lang-toggle">
             <button class="mobile-lang-btn active" data-lang="ja">JP</button>
@@ -1249,85 +1245,6 @@
                     <p data-i18n="about.mission3.desc">健やかに生産し続けること</p>
                 </div>
             </div>
-
-            <!-- Info Table -->
-            <div class="reveal">
-                <span class="sub-label">Info</span>
-                <div class="glass info-table-wrap glass-strong" style="padding: 0;">
-                    <table class="info-table">
-                        <tbody>
-                            <tr>
-                                <th data-i18n="info.company.label">会社名</th>
-                                <td data-i18n-html="info.company.value">合同会社緑蝶（みどりちょう）<br>MIDORICHO, LIMITED LIABILITY
-                                    COMPANY</td>
-                            </tr>
-                            <tr>
-                                <th data-i18n="info.brand.label">ブランド名</th>
-                                <td data-i18n="info.brand.value">VERDAFLY（ヴァダフライ）</td>
-                            </tr>
-                            <tr>
-                                <th data-i18n="info.established.label">設立</th>
-                                <td data-i18n="info.established.value">令和7年1月31日（2025年1月31日）</td>
-                            </tr>
-                            <tr>
-                                <th data-i18n="info.business.label">事業内容</th>
-                                <td data-i18n="info.business.value">デジタルエンターテイメントコンテンツの開発</td>
-                            </tr>
-                            <tr>
-                                <th data-i18n="info.address.label">本社所在地</th>
-                                <td data-i18n-html="info.address.value">〒359-1111<br>埼玉県所沢市緑町4-20-27</td>
-                            </tr>
-                            <tr>
-                                <th data-i18n="info.corpnum.label">法人番号</th>
-                                <td>5030003026027</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Contact -->
-    <section id="contact" class="section relative">
-        <div class="container">
-            <div class="section-header center reveal">
-                <span class="section-label">Contact</span>
-                <h2 class="section-title" data-i18n="contact.title">お問い合わせ</h2>
-                <p class="section-desc" data-i18n="contact.desc">お気軽にご連絡ください。</p>
-            </div>
-
-            <div class="glass reveal" style="max-width: 640px; margin: 0 auto; padding: 3rem;">
-                <form>
-                    <div class="form-group">
-                        <label for="name" class="form-label"><span data-i18n="contact.form.name">お名前</span><span
-                                class="required">*</span></label>
-                        <input type="text" id="name" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="form-label"><span data-i18n="contact.form.email">メールアドレス</span><span
-                                class="required">*</span></label>
-                        <input type="email" id="email" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject" class="form-label"><span data-i18n="contact.form.subject">件名</span></label>
-                        <input type="text" id="subject" class="form-input">
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="form-label"><span data-i18n="contact.form.message">メッセージ</span><span
-                                class="required">*</span></label>
-                        <textarea id="message" class="form-input" required></textarea>
-                    </div>
-                    <div style="text-align: center;">
-                        <button type="submit" class="submit-btn">
-                            <span data-i18n="contact.form.submit">送信する</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
         </div>
     </section>
 
@@ -1381,8 +1298,6 @@
                 <div>
                     <div class="footer-heading" data-i18n="footer.nav">ナビゲーション</div>
                     <a href="#services" class="footer-link" data-i18n="nav.services">事業内容</a>
-                    <a href="#about" class="footer-link" data-i18n="nav.about">会社概要</a>
-                    <a href="#contact" class="footer-link" data-i18n="footer.contact">お問い合わせ</a>
                 </div>
                 <div>
                     <div class="footer-heading" data-i18n="footer.services">サービス</div>
@@ -1394,7 +1309,7 @@
                 </div>
             </div>
             <div class="footer-bottom" data-i18n-html="footer.copyright">
-                &copy; 2025 合同会社緑蝶 All Rights Reserved.
+                &copy; 2025 Verdafly All Rights Reserved.
             </div>
         </div>
     </footer>
@@ -1404,7 +1319,7 @@
         const i18n = {
             ja: {
                 'nav.services': '事業内容',
-                'nav.about': '会社概要',
+                'nav.about': 'About',
                 'nav.contact': 'Contact',
                 'hero.subtitle': '<span class="accent">デジタルの翅</span>で<br>エンターテイメントの未来を羽ばたく',
                 'services.title': '事業内容',
@@ -1441,7 +1356,7 @@
                 'services.solution.item4': 'ユーザー体験最適化',
                 'services.solution.item5': 'レガシーコンテンツのデジタル変換支援',
                 'services.solution.item6': 'コンテンツリメイク',
-                'about.title': '会社概要',
+                'about.title': 'Verdaflyについて',
                 'about.vision': 'シンプルで心地よいコンテンツが、<br>いつでも手に入る世界の実現',
                 'about.mission1.title': 'プリミティブ',
                 'about.mission1.desc': '根源的な愉しさがあること',
@@ -1449,28 +1364,10 @@
                 'about.mission2.desc': '適切な要素と量であること',
                 'about.mission3.title': 'サステナブル',
                 'about.mission3.desc': '健やかに生産し続けること',
-                'info.company.label': '会社名',
-                'info.company.value': '合同会社緑蝶（みどりちょう）<br>MIDORICHO, LIMITED LIABILITY COMPANY',
-                'info.brand.label': 'ブランド名',
-                'info.brand.value': 'VERDAFLY（ヴァダフライ）',
-                'info.established.label': '設立',
-                'info.established.value': '令和7年1月31日（2025年1月31日）',
-                'info.business.label': '事業内容',
-                'info.business.value': 'デジタルエンターテイメントコンテンツの開発',
-                'info.address.label': '本社所在地',
-                'info.address.value': '〒359-1111<br>埼玉県所沢市緑町4-20-27',
-                'info.corpnum.label': '法人番号',
-                'contact.title': 'お問い合わせ',
-                'contact.desc': 'お気軽にご連絡ください。',
-                'contact.form.name': 'お名前',
-                'contact.form.email': 'メールアドレス',
-                'contact.form.subject': '件名',
-                'contact.form.message': 'メッセージ',
-                'contact.form.submit': '送信する',
                 'footer.nav': 'ナビゲーション',
                 'footer.contact': 'お問い合わせ',
                 'footer.services': 'サービス',
-                'footer.copyright': '&copy; 2025 合同会社緑蝶 All Rights Reserved.'
+                'footer.copyright': '&copy; 2025 Verdafly All Rights Reserved.'
             },
             en: {
                 'nav.services': 'Services',
@@ -1511,7 +1408,7 @@
                 'services.solution.item4': 'User Experience Optimization',
                 'services.solution.item5': 'Legacy Content Digital Transformation',
                 'services.solution.item6': 'Content Remake',
-                'about.title': 'About Us',
+                'about.title': 'About Verdafly',
                 'about.vision': 'Realizing a world where simple,<br>comfortable content is always within reach',
                 'about.mission1.title': 'Primitive',
                 'about.mission1.desc': 'Rooted in fundamental joy',
@@ -1519,28 +1416,10 @@
                 'about.mission2.desc': 'The right elements in the right measure',
                 'about.mission3.title': 'Sustainable',
                 'about.mission3.desc': 'Creating in a healthy, lasting way',
-                'info.company.label': 'Company',
-                'info.company.value': 'MIDORICHO, LIMITED LIABILITY COMPANY<br>(合同会社緑蝶)',
-                'info.brand.label': 'Brand',
-                'info.brand.value': 'VERDAFLY',
-                'info.established.label': 'Established',
-                'info.established.value': 'January 31, 2025',
-                'info.business.label': 'Business',
-                'info.business.value': 'Digital Entertainment Content Development',
-                'info.address.label': 'Headquarters',
-                'info.address.value': '4-20-27 Midoricho, Tokorozawa,<br>Saitama 359-1111, Japan',
-                'info.corpnum.label': 'Corp. Number',
-                'contact.title': 'Contact Us',
-                'contact.desc': 'Feel free to reach out to us.',
-                'contact.form.name': 'Name',
-                'contact.form.email': 'Email',
-                'contact.form.subject': 'Subject',
-                'contact.form.message': 'Message',
-                'contact.form.submit': 'Send',
                 'footer.nav': 'Navigation',
                 'footer.contact': 'Contact',
                 'footer.services': 'Services',
-                'footer.copyright': '&copy; 2025 MIDORICHO, LIMITED LIABILITY COMPANY. All Rights Reserved.'
+                'footer.copyright': '&copy; 2025 Verdafly. All Rights Reserved.'
             }
         };
 

@@ -24,3 +24,7 @@ pencil-new.pen
 # Environments
 .env
 .env.*
+
+# AI Instructions
+CLAUDE.md
+claude.md
