@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalArchiveMovieJP - Verdafly</title>
+    <meta name="description" content="Public information page for DigitalArchiveMovieJP, a private internal workflow that uses YouTube API Services to publish rights-cleared cultural archive videos.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --panel: #111827;
+            --text: #f8fafc;
+            --muted: #cbd5e1;
+            --line: #334155;
+            --accent: #22c55e;
+            --accent-soft: rgba(34, 197, 94, 0.16);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.65;
+            color: var(--text);
+            background: var(--bg);
+        }
+        a { color: #86efac; }
+        header, main, footer { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .brand { font-weight: 800; letter-spacing: 0.04em; }
+        nav { display: flex; gap: 16px; flex-wrap: wrap; }
+        nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+        nav a:hover, nav a:focus { color: var(--text); }
+        .hero { padding: 72px 0 56px; }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            color: #bbf7d0;
+            background: var(--accent-soft);
+            border: 1px solid rgba(34, 197, 94, 0.32);
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        h1 {
+            margin: 22px 0 18px;
+            font-size: clamp(2.4rem, 7vw, 5.2rem);
+            line-height: 1;
+            letter-spacing: 0;
+        }
+        h2 { margin: 0 0 14px; font-size: clamp(1.45rem, 3vw, 2rem); }
+        p { margin: 0 0 16px; color: var(--muted); }
+        .lead { max-width: 780px; font-size: clamp(1.1rem, 2.2vw, 1.35rem); }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin: 28px 0 0;
+        }
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 24px;
+        }
+        .panel strong { display: block; margin-bottom: 8px; color: var(--text); }
+        .section { padding: 42px 0; border-top: 1px solid var(--line); }
+        .facts {
+            display: grid;
+            grid-template-columns: minmax(180px, 280px) 1fr;
+            gap: 0;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .facts dt, .facts dd { margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+        .facts dt { color: var(--text); background: rgba(15, 23, 42, 0.64); font-weight: 700; }
+        .facts dd { color: var(--muted); background: rgba(17, 24, 39, 0.8); }
+        .facts dt:last-of-type, .facts dd:last-of-type { border-bottom: 0; }
+        .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+        .button {
+            display: inline-flex;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            color: #052e16;
+            background: #86efac;
+            font-weight: 800;
+            text-decoration: none;
+        }
+        .button.secondary { color: var(--text); background: transparent; border-color: var(--line); }
+        footer { padding: 28px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.95rem; }
+        @media (max-width: 760px) {
+            header { align-items: flex-start; flex-direction: column; }
+            .hero { padding-top: 44px; }
+            .grid, .facts { grid-template-columns: 1fr; }
+            .facts dt { border-bottom: 0; padding-bottom: 4px; }
+            .facts dd { padding-top: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand">Verdafly</div>
+        <nav aria-label="DigitalArchiveMovieJP navigation">
+            <a href="./">Project</a>
+            <a href="./privacy/">Privacy Policy</a>
+            <a href="./terms/">Terms</a>
+            <a href="https://www.verdafly.com/">Verdafly Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <span class="eyebrow">Uses YouTube API Services</span>
+            <h1>DigitalArchiveMovieJP</h1>
+            <p class="lead">DigitalArchiveMovieJP is a private internal workflow operated by Verdafly to publish rights-cleared historical and cultural materials as videos on a YouTube channel managed by the operator.</p>
+            <div class="actions">
+                <a class="button" href="./privacy/">Privacy Policy</a>
+                <a class="button secondary" href="./terms/">Terms of Use</a>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="purpose-title">
+            <h2 id="purpose-title">Purpose</h2>
+            <p>The workflow supports the Culture Materials Preservation activity by converting public-domain or otherwise rights-cleared materials into viewable videos and publishing them with source attribution.</p>
+            <div class="grid">
+                <div class="panel">
+                    <strong>Rights-first publishing</strong>
+                    <p>Materials are selected only when source, rights status, and publication basis can be recorded.</p>
+                </div>
+                <div class="panel">
+                    <strong>Internal operation</strong>
+                    <p>The API client is not distributed as a public app and is used only by the channel operator.</p>
+                </div>
+                <div class="panel">
+                    <strong>YouTube publishing</strong>
+                    <p>The workflow uses YouTube API Services to upload videos and set related metadata such as title, description, privacy status, and thumbnails.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="access-title">
+            <h2 id="access-title">API Client Information</h2>
+            <dl class="facts">
+                <dt>API client name</dt>
+                <dd>DigitalArchiveMovieJP</dd>
+                <dt>Operator</dt>
+                <dd>Verdafly / Midoricho LLC</dd>
+                <dt>Public YouTube channel</dt>
+                <dd><a href="https://www.youtube.com/channel/UCjLR5rRK7Wj59-QbdPDxEHQ">Culture Materials Preservation channel</a></dd>
+                <dt>Public access</dt>
+                <dd>The workflow itself is private and has no public login or public user interface.</dd>
+                <dt>Contact</dt>
+                <dd><a href="mailto:admin@verdafly.com">admin@verdafly.com</a></dd>
+            </dl>
+        </section>
+
+        <section class="section" aria-labelledby="policy-title">
+            <h2 id="policy-title">Policy Links</h2>
+            <p>This API client uses YouTube API Services. Use of YouTube is also subject to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+            <p>Authorized Google account access can be reviewed or revoked from the <a href="https://security.google.com/settings/security/permissions">Google security settings page</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <span>&copy; 2026 Verdafly / Midoricho LLC.</span>
+    </footer>
+</body>
+</html>
