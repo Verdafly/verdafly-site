@@ -1,8 +1,11 @@
 # Cloudflare Workers Static Assets
 
-This repo is currently served by GitHub Pages. This document records the local-only preparation for moving the same static site to Cloudflare Workers Static Assets.
+This repo is served in production by Cloudflare Workers Static Assets.
 
-No Cloudflare deployment or DNS change is performed by the commands below unless `npm run deploy:cloudflare` is explicitly run.
+`www.verdafly.com` is attached to Worker `verdafly-site`.
+The apex `verdafly.com` is attached to Worker `verdafly-apex-redirect`, which redirects to `https://www.verdafly.com`.
+
+No Cloudflare deployment or DNS change is performed by the commands below unless `npm run deploy:cloudflare` or a Cloudflare API change is explicitly approved.
 
 ## Commands
 
@@ -24,6 +27,11 @@ npm run verify:cloudflare
 Before running `npm run deploy:cloudflare`:
 
 1. Confirm `VerdaflyDomainOps` has a current Cloudflare DNS export snapshot.
-2. Confirm `www.verdafly.com` is still safe to cut over from GitHub Pages.
+2. Confirm the production hostname and rollback path in `VerdaflyDomainOps`.
 3. Confirm `digital-archive-movie-jp/` public URLs remain byte-for-byte compatible enough for YouTube API review/audit references.
 4. Record rollback instructions in `Z:\projects\VerdaflyDomainOps`.
+
+## GitHub Pages
+
+GitHub Pages has been retired as the production host.
+This repo no longer keeps a `CNAME` file for `www.verdafly.com`.
