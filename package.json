@@ -1,0 +1,13 @@
+{
+  "name": "verdafly-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:cloudflare": "node scripts/build-cloudflare-assets.mjs",
+    "verify:cloudflare": "npm run build:cloudflare && node scripts/verify-cloudflare-assets.mjs",
+    "deploy:cloudflare": "npm run verify:cloudflare && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "4.105.0"
+  }
+}
