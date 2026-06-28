@@ -31,7 +31,18 @@ Before running `npm run deploy:cloudflare`:
 3. Confirm `digital-archive-movie-jp/` public URLs remain byte-for-byte compatible enough for YouTube API review/audit references.
 4. Record rollback instructions in `Z:\projects\VerdaflyDomainOps`.
 
+## GitHub Actions
+
+The workflow `.github/workflows/deploy-cloudflare.yml` verifies the static assets and deploys with Wrangler.
+
+Required repository secrets:
+
+- `CLOUDFLARE_ACCOUNT_ID`
+- `CLOUDFLARE_API_TOKEN`
+
+`CLOUDFLARE_ACCOUNT_ID` is configured. `CLOUDFLARE_API_TOKEN` must be a least-privilege Cloudflare token for Workers deploys and must not be committed.
+
 ## GitHub Pages
 
 GitHub Pages has been retired as the production host.
-This repo no longer keeps a `CNAME` file for `www.verdafly.com`.
+This repo no longer keeps a `CNAME` file for `www.verdafly.com`, and GitHub Pages source is set to `None`.
