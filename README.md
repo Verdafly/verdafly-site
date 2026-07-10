@@ -1,8 +1,8 @@
 # Verdafly site
 
-`adminVerdafly/verdafly.github.io` is the source repository for the Verdafly public site.
+`adminVerdafly/verdafly-site` is the source repository for the Verdafly public site.
 
-The repository name comes from the former GitHub Pages hosting setup. GitHub Pages is retired; production is currently served by Cloudflare Workers:
+GitHub Pages is retired; production is currently served by Cloudflare Workers:
 
 - `www.verdafly.com` → Worker `verdafly-site`
 - `verdafly.com` → Worker `verdafly-apex-redirect` → `https://www.verdafly.com/`
