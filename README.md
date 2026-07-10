@@ -1,6 +1,6 @@
 # Verdafly site
 
-`adminVerdafly/verdafly-site` is the source repository for the Verdafly public site.
+`Verdafly/verdafly-site` is the source repository for the Verdafly public site.
 
 GitHub Pages is retired; production is currently served by Cloudflare Workers:
 
